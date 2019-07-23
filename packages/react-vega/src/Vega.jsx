@@ -1,13 +1,17 @@
+import PropTypes from 'prop-types';
+import React from 'react';
 /* eslint-disable react/no-unused-prop-types */
 /* eslint-disable react/forbid-prop-types */
 import * as vega from 'vega';
-
-import PropTypes from 'prop-types';
-import React from 'react';
 import vegaEmbed from 'vega-embed';
+
 import { capitalize, isDefined, isFunction } from './util';
 
 const propTypes = {
+  actions: PropTypes.oneOfType([
+    PropTypes.bool,
+    PropTypes.object
+  ]),
   background: PropTypes.string,
   className: PropTypes.string,
   data: PropTypes.object,
@@ -25,6 +29,7 @@ const propTypes = {
 };
 
 const defaultProps = {
+  actions: true,
   background: undefined,
   className: '',
   data: {},
@@ -174,6 +179,7 @@ class Vega extends React.Component {
 
   propsToEmbedOptions(props) {
     return {
+      ...(props.actions ? { actions: props.actions } : {}),
       ...(props.enableHover ? { hover: props.enableHover } : {}),
       ...(props.height ? { height: props.height } : {}),
       ...(props.logLevel ? { logLevel: props.logLevel } : {}),

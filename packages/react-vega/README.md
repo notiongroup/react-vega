@@ -130,6 +130,7 @@ React class `Vega` and any output class from `createClassFromSpec` have these pr
 - **height**:Number
 - **padding**:Object
 - **renderer**:String
+- **actions**:Object or Boolean
 - **logLevel**:Number
 - **background**:String
 - **tooltip**:Function
